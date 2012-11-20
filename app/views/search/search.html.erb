@@ -7,7 +7,7 @@
   <div class="row">
     <div class="span12">
         <% @pages.results.each do |page| %>
-            <p><%= link_to CGI::unescape(page['url']) CGI::unescape(page['url']) %></p>
+            <p><%= link_to CGI::unescape(page['url']), CGI::unescape(page['url']) %></p>
             <p><%= page['content'][0..100]%></p>
         <% end %>
     </div>
