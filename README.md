@@ -15,7 +15,7 @@ Execute from your local machine;
 * iron_worker upload workers/indexer --full-remote-build
 * iron_worker upload workers/web_crawler --full-remote-build
 
-Now deploy application, go to curl tab and enter an url to crawl.
+Now deploy application, go to crawler tab and enter an url to crawl.
 
 Iron.io workers will crawl html content and index it SearchBox.io.
 
