@@ -40,6 +40,7 @@ end
 #initializing IW an Iron Cache
 @iron_cache_client = IronCache::Client.new({"token" => params['iron_cache_token'], "project_id" => params['iron_cache_id']})
 @iron_mq_client = IronMQ::Client.new(:token => params['iron_mq_token'], :project_id => params['iron_mq_project_id'])
+@iron_worker_client = IronWorkerNG::Client.new(:token => params['iron_worker_token'], :project_id => params['iron_worker_project_id'])
 
 #getting list of urls
 messages = get_list_of_messages
