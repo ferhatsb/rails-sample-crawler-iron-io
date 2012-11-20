@@ -11,5 +11,6 @@ RailsSample::Application.routes.draw do
   root :to => 'home#index'
   
   get 'crawler', :to => 'crawler#index'
+  get 'crawler/crawl', :to => 'crawler#crawl', :as => 'crawl'
 
 end

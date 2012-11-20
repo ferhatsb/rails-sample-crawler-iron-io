@@ -1,6 +1,6 @@
 class CrawlerController < ApplicationController
   
-  def crawler
+  def crawl
     url = params[:url]
   
     def p
