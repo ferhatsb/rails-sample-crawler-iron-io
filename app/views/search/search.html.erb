@@ -12,17 +12,16 @@
           <th>
             Name
           </th>
-          <th>
-            Text
-          </th>
         </tr>
         </thead>
         <tbody>
 
         <% @pages.results.each do |page| %>
             <tr>
-              <td><%= page['url'] %></td>
-              <td></td>
+              <td><%= CGI::unescape(page['url']) %></td>
+            </tr>
+			<tr>
+              <td><%= page['content'][0..100]%></td>
             </tr>
         <% end %>
         </tbody>
