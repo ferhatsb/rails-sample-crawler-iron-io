@@ -8,7 +8,7 @@ def process_page(url)
   puts "Processing page #{url}"
   doc = Nokogiri::HTML(open(url))
   doc.css('script').remove
-  content = doc.at('body').inner_text.scan(/\w+/)
+  content = doc.at('body').inner_text
 
   #putting all in index queue
   @queue = @iron_mq_client.queue("index_queue")
