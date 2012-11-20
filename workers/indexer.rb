@@ -1,4 +1,4 @@
-require 'yajl/json_gem'
+require 'json'
 require 'tire'
 require 'iron_mq'
 require 'open-uri'
@@ -16,13 +16,11 @@ def get_list_of_messages
 end
 
 def index_pages(messages)
-  #parser
-  parser = Yajl::Parser.new
   #using elasticsearch bulk api
   pages = []
   #processing each pages
   messages.each do |message|
-    page = parser.parse(message.body)
+    page = JSON message.body
     pages << {:id => Digest::SHA1.hexdigest(page['url']), :type => 'page', :url => page['url'], :content => page['content']}.to_json
     message.delete
   end
