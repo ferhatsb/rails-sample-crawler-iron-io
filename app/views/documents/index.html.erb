@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="page-header">
+    <h1>
+      All Documents</h1>
+  </div>
+
+  <div class="row">
+    <div class="span12">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            Text
+          </th>
+          <th colspan="2">
+            Actions
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <% @documents.each do |document| %>
+            <tr>
+              <td><%= document.name %></td>
+              <td><%= document.text %></td>
+              <td><%= link_to 'Edit', edit_document_path(document) %></td>
+              <td><%= link_to 'Destroy', document, confirm: 'Are you sure?', method: :delete %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span2">
+      <p><%= link_to 'New Document', new_document_path, :class =>  "btn btn-small btn-primary" %></p>
+    </div>
+    <div class="span2">
+      <p><a class="btn btn-small btn-primary" href="/documents/bulk_index">Reindex All</a></p>
+    </div>
+  </div>
+
+
+</div>
