@@ -1,8 +1,11 @@
 class SearchController < ApplicationController  
   def search
+    
+    query = params[:query]
+    
     @pages = Tire.search 'articles' do
           query do
-            string params[:query]
+            string query
           end
         end
   end
