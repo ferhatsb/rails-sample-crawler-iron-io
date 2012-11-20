@@ -7,13 +7,15 @@ require 'iron_worker_ng'
 def process_page(url)
   puts "Processing page #{url}"
   doc = Nokogiri::HTML(open(url))
+  doc.css('script').remove
+  content = doc.at('body').inner_text.scan(/\w+/)
 
   #putting all in index queue
   @queue = @iron_mq_client.queue("index_queue")
 
   @queue.post({:status => "processed",
                :url => CGI::escape(url),
-               :content => doc.xpath("//text()").to_s,
+               :content => content,
                :timestamp => Time.now}.to_json)
 end
 

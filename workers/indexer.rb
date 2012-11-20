@@ -6,8 +6,8 @@ require 'digest/sha1'
 
 
 def get_list_of_messages
-  #100 pages per worker at max
-  max_number_of_pages = 100
+  #1000 pages per worker at max
+  max_number_of_pages = 1000
   puts "Getting messages from IronMQ"
   @queue = @iron_mq_client.queue("index_queue")
   messages = @queue.get(:n => max_number_of_pages, :timeout => 100)
