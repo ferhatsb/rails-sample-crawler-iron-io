@@ -3,8 +3,7 @@ class CrawlerController < ApplicationController
   def crawl
     url = params[:url]
   
-    def p
-      {'url' => url,
+    p = {'url' => url,
        'page_limit' => 1000,
        'depth' => 3,
        'max_workers' => 50,
@@ -14,7 +13,6 @@ class CrawlerController < ApplicationController
        'iron_mq_token' => ENV['IRON_MQ_TOKEN'],
        'iron_worker_project_id' => ENV['IRON_WORKER_PROJECT_ID'],
        'iron_worker_token' => ENV['IRON_WORKER_TOKEN']}
-    end
     
     ng_client = IronWorkerNG::Client.new(:token => p['iron_worker_token'], :project_id => p['iron_worker_project_id'])
     #cleaning up cache
