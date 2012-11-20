@@ -35,11 +35,11 @@ end
 
 #configure Tire with SearchBox.io
 Tire.configure do
-  url p['searchbox_url']
+  url params['searchbox_url']
 end
 
 #initializing Iron MQ
-@iron_mq_client = IronMQ::Client.new(:token => p['iw_token'], :project_id => p['iw_project_id'])
+@iron_mq_client = IronMQ::Client.new(:token => params['iron_mq_token'], :project_id => params['iron_mq_project_id'])
 
 #getting list of pages
 messages = get_list_of_messages

@@ -34,15 +34,12 @@ def increment_counter(url, cache_item)
 end
 
 def queue_indexers
-  p = {:iw_token => params["iw_token"],
-       :iw_project_id => params["iw_project_id"],
-  :searchbox_url => params["searchbox_url"]}
-  @iron_worker_client.tasks.create("Indexer", p)
+  @iron_worker_client.tasks.create("Indexer", params)
 end
 
 #initializing IW an Iron Cache
-@iron_cache_client = IronCache::Client.new({"token" => params['iw_token'], "project_id" => params['iw_project_id']})
-@iron_mq_client = IronMQ::Client.new(:token => params['iw_token'], :project_id => params['iw_project_id'])
+@iron_cache_client = IronCache::Client.new({"token" => params['iron_cache_token'], "project_id" => params['iron_cache_id']})
+@iron_mq_client = IronMQ::Client.new(:token => params['iron_mq_token'], :project_id => params['iron_mq_project_id'])
 
 #getting list of urls
 messages = get_list_of_messages

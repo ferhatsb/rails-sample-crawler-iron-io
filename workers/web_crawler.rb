@@ -61,8 +61,12 @@ def queue_worker(depth, page_url)
        :page_limit => params["page_limit"],
        :depth => depth - 1,
        :max_workers => params["max_workers"],
-       :iw_token => params["iw_token"],
-       :iw_project_id => params["iw_project_id"],
+       :iron_cache_token => params["iron_cache_token"],
+       :iron_cache_id => params["iron_cache_id"],
+       :iron_worker_token => params["iron_worker_token"],
+       :iron_worker_project_id => params["iron_worker_project_id"],
+       :iron_mq_token => params["iron_mq_token"],
+       :iron_mq_project_id => params["iron_mq_project_id"],
        :searchbox_url => params["searchbox_url"]
   }
   #queueing child worker or processing page in same worker
@@ -81,9 +85,9 @@ def queue_worker(depth, page_url)
 end
 
 #initializing IW an Iron Cache
-@iron_cache_client = IronCache::Client.new({"token" => params['iw_token'], "project_id" => params['iw_project_id']})
-@iron_worker_client = IronWorkerNG::Client.new(:token => params['iw_token'], :project_id => params['iw_project_id'])
-@iron_mq_client = IronMQ::Client.new(:token => params['iw_token'], :project_id => params['iw_project_id'])
+@iron_cache_client = IronCache::Client.new({"token" => params['iron_cache_token'], "project_id" => params['iron_cache_id']})
+@iron_worker_client = IronWorkerNG::Client.new(:token => params['iron_worker_token'], :project_id => params['iron_worker_project_id'])
+@iron_mq_client = IronMQ::Client.new(:token => params['iron_mq_token'], :project_id => params['iron_mq_project_id'])
 
 #start crawling
 crawl_domain(params['url'], params['depth']||1)
