@@ -2,6 +2,7 @@ require 'open-uri'
 require 'nokogiri'
 require 'iron_cache'
 require 'iron_mq'
+require 'iron_worker_ng'
 
 def process_page(url)
   puts "Processing page #{url}"

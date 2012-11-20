@@ -14,7 +14,8 @@ class CrawlerController < ApplicationController
        'iron_mq_project_id' => ENV['IRON_MQ_PROJECT_ID'],
        'iron_mq_token' => ENV['IRON_MQ_TOKEN'],
        'iron_worker_project_id' => ENV['IRON_WORKER_PROJECT_ID'],
-       'iron_worker_token' => ENV['IRON_WORKER_TOKEN']}
+       'iron_worker_token' => ENV['IRON_WORKER_TOKEN'],
+       'searchbox_url' => ENV['SEARCHBOX_URL']}
        
     puts p['url']
     
