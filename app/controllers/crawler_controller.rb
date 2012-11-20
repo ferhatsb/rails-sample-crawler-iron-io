@@ -1,5 +1,8 @@
 class CrawlerController < ApplicationController
   
+  def index
+  end
+  
   def crawl
   
     p = {'url' => params[:url],
@@ -23,7 +26,7 @@ class CrawlerController < ApplicationController
     puts "Launching crawler"
     ng_client.tasks.create("WebCrawler", p)
     
-    format.html { render action: "index" } 
+    render action: "index"
     
   end
 end
