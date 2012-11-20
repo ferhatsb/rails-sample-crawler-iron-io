@@ -32,6 +32,7 @@ def index_pages(messages)
 end
 
 #configure Tire with SearchBox.io
+puts "Configuring tire with #{params['searchbox_url']}"
 Tire.configure do
   url params['searchbox_url']
 end
