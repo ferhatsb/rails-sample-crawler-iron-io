@@ -1,9 +1,8 @@
 class CrawlerController < ApplicationController
   
   def crawl
-    url = params[:url]
   
-    p = {'url' => url,
+    p = {'url' => params[:url],
        'page_limit' => 1000,
        'depth' => 3,
        'max_workers' => 50,
@@ -13,6 +12,8 @@ class CrawlerController < ApplicationController
        'iron_mq_token' => ENV['IRON_MQ_TOKEN'],
        'iron_worker_project_id' => ENV['IRON_WORKER_PROJECT_ID'],
        'iron_worker_token' => ENV['IRON_WORKER_TOKEN']}
+       
+    puts p['url']
     
     ng_client = IronWorkerNG::Client.new(:token => p['iron_worker_token'], :project_id => p['iron_worker_project_id'])
     #cleaning up cache
@@ -21,5 +22,8 @@ class CrawlerController < ApplicationController
     #launching worker
     puts "Launching crawler"
     ng_client.tasks.create("WebCrawler", p)
+    
+    format.html { render action: "index" } 
+    
   end
 end
