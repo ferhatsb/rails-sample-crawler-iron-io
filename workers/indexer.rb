@@ -10,7 +10,7 @@ def get_list_of_messages
   max_number_of_pages = 100
   puts "Getting messages from IronMQ"
   @queue = @iron_mq_client.queue("index_queue")
-  messages = @queue.get(:n => max_number_of_urls, :timeout => 100)
+  messages = @queue.get(:n => max_number_of_pages, :timeout => 100)
   puts "Got messages from queue - #{messages.count}"
   messages
 end
@@ -33,9 +33,7 @@ end
 
 #configure Tire with SearchBox.io
 puts "Configuring tire with #{params['searchbox_url']}"
-Tire.configure do
-  url params['searchbox_url']
-end
+Tire::Configuration.url params['searchbox_url']
 
 #initializing Iron MQ
 @iron_mq_client = IronMQ::Client.new(:token => params['iron_mq_token'], :project_id => params['iron_mq_project_id'])

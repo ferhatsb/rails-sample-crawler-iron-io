@@ -6,14 +6,14 @@ require 'iron_worker_ng'
 
 def process_page(url)
   puts "Processing page #{url}"
-  doc = Nokogiri(open(url))
+  doc = Nokogiri::HTML(open(url))
 
   #putting all in index queue
   @queue = @iron_mq_client.queue("index_queue")
 
   @queue.post({:status => "processed",
                :url => CGI::escape(url),
-               :content => doc,
+               :content => doc.xpath("//text()").to_s,
                :timestamp => Time.now}.to_json)
 end
 
