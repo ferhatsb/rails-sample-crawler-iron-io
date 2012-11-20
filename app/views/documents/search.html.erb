@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="page-header">
+    <h1>
+      Search Results</h1>
+  </div>
+
+  <div class="row">
+    <div class="span12">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            Text
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <% @documents.each do |document| %>
+            <tr>
+              <td><%= document.name %></td>
+              <td><%= document.text %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

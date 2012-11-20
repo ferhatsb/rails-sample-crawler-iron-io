@@ -1,0 +1,7 @@
+runtime "ruby"
+merge_gem 'iron_worker_ng'
+merge_gem 'iron_cache'
+merge_gem 'iron_mq'
+file 'url_utils.rb'
+exec "web_crawler.rb"
+name 'WebCrawler'

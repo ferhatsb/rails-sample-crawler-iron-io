@@ -1,0 +1,7 @@
+runtime "ruby"
+merge_gem 'iron_worker_ng'
+merge_gem 'iron_mq'
+merge_gem 'tire'
+merge_gem 'yajl'
+exec "indexer.rb"
+name 'Indexer'
