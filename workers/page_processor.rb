@@ -7,8 +7,8 @@ require 'iron_worker_ng'
 def process_page(url)
   puts "Processing page #{url}"
   doc = Nokogiri::HTML(open(url))
-  doc.css('script').remove
-  content = doc.at('body').inner_text
+  content = doc.css('script').remove
+  content = content.xpath("//body//p")
 
   #putting all in index queue
   @queue = @iron_mq_client.queue("index_queue")
@@ -20,8 +20,8 @@ def process_page(url)
 end
 
 def get_list_of_messages
-  #100 pages per worker at max
-  max_number_of_urls = 100
+  #300 pages per worker at max
+  max_number_of_urls = 300
   puts "Getting messages from IronMQ"
   @queue = @iron_mq_client.queue("page_queue")
   messages = @queue.get(:n => max_number_of_urls, :timeout => 100)
