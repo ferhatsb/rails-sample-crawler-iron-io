@@ -6,8 +6,8 @@ class CrawlerController < ApplicationController
   def crawl
   
     p = {'url' => params[:url],
-       'page_limit' => 1000,
-       'depth' => 3,
+       'page_limit' => 10000,
+       'depth' => 10,
        'max_workers' => 50,
        'iron_cache_id' => ENV['IRON_CACHE_PROJECT_ID'],
        'iron_cache_token' => ENV['IRON_CACHE_TOKEN'],
